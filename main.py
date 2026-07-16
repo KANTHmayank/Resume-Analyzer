@@ -13,7 +13,7 @@ from pdf2image.exceptions import PDFInfoNotInstalledError
 import google.generativeai as genai
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-DEFAULT_GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+DEFAULT_GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
 
 def get_gemini_response(input, pdf_content, prompt):
     model = genai.GenerativeModel(DEFAULT_GEMINI_MODEL)
