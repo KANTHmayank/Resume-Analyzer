@@ -1,24 +1,37 @@
-## AI Resume Expert
+# AI Resume Expert
 
-This is a Streamlit app that analyzes a resume PDF against a job description and returns:
+AI Resume Expert is a Streamlit app that helps analyze a resume against a job description.
 
-- a resume review
-- an ATS-style match score
+## What it does
 
-### Deployment on Streamlit Community Cloud
+At a glance, the app works like this:
 
-1. Push this `week1/day4` project to GitHub.
-2. In Streamlit Cloud, create a new app and point it to `main.py`.
-3. Add your secrets in the app settings:
+1. Upload a resume in PDF format.
+2. Paste a job description into the text area.
+3. The app converts the resume PDF into an image using Poppler.
+4. Google Gemini reads the resume content and compares it with the job description.
+5. The app returns either:
+   - a detailed resume review, or
+   - an ATS-style percentage match score
 
-	- `GEMINI_API_KEY` = your Gemini API key
-	- optional: `GEMINI_MODEL` = `gemini-3.5-flash`
+## Requirements
 
-4. Keep `requirements.txt` in the repo root so Streamlit installs the Python packages.
-5. Keep `packages.txt` in the repo root so Streamlit installs Poppler on the host.
+To run the project locally or deploy it to Streamlit Cloud, you need:
 
-### Local run
+- Python 3.12+
+- Streamlit
+- `pdf2image`
+- Poppler installed and available on PATH, or installed through `packages.txt` on Streamlit Cloud
+- A valid `GEMINI_API_KEY`
+
+## Local run
 
 ```powershell
 .\.venv\Scripts\python.exe -m streamlit run main.py
 ```
+
+## Deployment notes
+
+- `requirements.txt` installs the Python dependencies.
+- `packages.txt` installs Poppler on Streamlit Cloud.
+- Add your API key as a secret in Streamlit Cloud instead of hardcoding it in the app.
